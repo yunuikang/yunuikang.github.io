@@ -118,6 +118,7 @@ a{color:inherit}
 .facts div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding-top:10px;border-top:1px solid var(--line)}
 .facts dt{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--apricot-deep);padding-top:2px}
 .facts dd{margin:0;font-size:15.5px}
+.gpa{white-space:nowrap}
 .mini{display:inline-flex;align-items:center;gap:5px;margin-left:6px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--white);font:600 12.5px/1.4 var(--body);color:var(--apricot-deep);cursor:pointer;vertical-align:1px;transition:background .3s,border-color .3s}
 .mini:hover{background:var(--apricot-soft);border-color:var(--apricot)}
 .mini .chev{display:inline-block;transition:transform .4s var(--ease)}
@@ -396,7 +397,7 @@ dialog[open] .sheet{animation:sheetUp .6s var(--ease) both}
         <span class="step"><b>Energy infrastructure</b><small>EV charging</small></span>
       </div>
       <dl class="facts">
-        <div><dt>Education</dt><dd>B.S. Energy Engineering, KENTECH · Feb 2027 · GPA 4.16/4.30 <button class="mini" type="button" id="cwBtn" aria-expanded="false" aria-controls="coursework">Coursework <span class="chev">↓</span></button><br>Hankuk Academy of Foreign Studies, Yongin, Korea · Feb 2022</dd></div>
+        <div><dt>Education</dt><dd>B.S. Energy Engineering, KENTECH · Feb 2027<br><span class="gpa">GPA 4.16/4.30 <button class="mini" type="button" id="cwBtn" aria-expanded="false" aria-controls="coursework">Coursework <span class="chev">↓</span></button></span><br>Hankuk Academy of Foreign Studies, Yongin, Korea · Feb 2022</dd></div>
         <div><dt>Languages</dt><dd>Korean (native) · English: TOEFL iBT 110, TOEIC 980</dd></div>
       </dl>
 
@@ -588,7 +589,7 @@ dialog[open] .sheet{animation:sheetUp .6s var(--ease) both}
   <span class="orb o1"></span><span class="orb o2"></span>
   <div class="wrap">
     <h2 class="rv">Let's talk <em>research.</em></h2>
-    <p class="sub rv">I would be glad to hear from researchers working on power grid and energy infrastructure security.</p>
+    <p class="sub rv">Applying to PhD programs for Fall 2027.<br>Always glad to talk about power grid and energy security.</p>
     <div class="mailbox rv"><code id="email">yunuikang@kentech.ac.kr</code><button class="btn dark" type="button" data-copy style="padding:12px 18px">Copy</button></div>
     <div class="links rv">
       <a class="pill-link" href="files/yunui-kang-cv.pdf" target="_blank" rel="noopener">CV</a>
