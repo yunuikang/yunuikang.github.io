@@ -1,0 +1,752 @@
+<title>Yunui Kang</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap">
+<style>
+/* Layout: one warm-paper scroll — split hero with arched portrait, then alternating white / ivory bands of soft cards. */
+:root{
+  --white:#FFFFFF; --ivory:#FAF7F0; --cream:#F3ECDF; --ink:#1E1C19; --muted:#6E695F; --line:#E9E3D7;
+  --apricot:#E58A4E; --apricot-deep:#B2591F; --apricot-soft:#FBE3D2;
+  --peach:#FCE9DA; --butter:#FBF2D0; --sage:#E4EFE2; --sky:#E3EDF8;
+  --sage-ink:#3F6B4E; --sky-ink:#33597F; --butter-ink:#7A5B12; --peach-ink:#9A4A1C;
+  --shadow:0 8px 30px rgba(60,40,10,.06); --shadow-lg:0 18px 50px rgba(60,40,10,.11);
+  --display:"Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --body:"Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --r-sm:12px; --r-md:24px; --r-lg:32px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+h1,h2,h3{font-family:var(--display);font-variation-settings:"SOFT" 100,"opsz" 96;font-weight:500;letter-spacing:-.015em;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+::selection{background:var(--apricot-soft)}
+:focus-visible{outline:2px solid var(--apricot);outline-offset:3px;border-radius:8px}
+
+.band{position:relative}
+.band.ivory{background:var(--ivory)}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-block:112px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--apricot-deep)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px 40px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(34px,4.4vw,52px)}
+.sec-head .eyebrow{margin-bottom:12px}
+.sec-head p.note{max-width:420px;color:var(--muted)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;z-index:50;left:50%;top:calc(16px + env(safe-area-inset-top,0px));transform:translateX(-50%);
+  display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(255,255,255,.72);
+  backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(233,227,215,.9);box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+.nav .brand{font-family:var(--display);font-variation-settings:"SOFT" 100;font-weight:600;font-size:17px;padding:8px 14px 8px 12px;text-decoration:none;white-space:nowrap;opacity:0;width:0;padding-inline:0;overflow:hidden;transition:opacity .4s var(--ease),width .4s var(--ease),padding .4s var(--ease)}
+.nav.scrolled .brand{opacity:1;width:auto;padding:8px 10px 8px 12px}
+.nav-links{position:relative;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{position:relative;z-index:1;font-size:14.5px;font-weight:500;text-decoration:none;padding:9px 15px;border-radius:999px;color:var(--muted);white-space:nowrap;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-pill{position:absolute;z-index:0;top:0;bottom:0;border-radius:999px;background:var(--cream);transition:left .45s var(--ease),width .45s var(--ease),opacity .3s;opacity:0}
+.nav .cv{font-size:14.5px;font-weight:600;text-decoration:none;padding:9px 16px;border-radius:999px;background:var(--ink);color:var(--white);white-space:nowrap;transition:background .3s,transform .3s var(--ease)}
+.nav .cv:hover{background:var(--apricot-deep);transform:translateY(-1px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--white) 0%,var(--ivory) 100%)}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:end;padding-top:150px;padding-bottom:0}
+.hero-copy{padding-bottom:110px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 10px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:14px;color:var(--muted);box-shadow:var(--shadow)}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--apricot);box-shadow:0 0 0 0 rgba(229,138,78,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(229,138,78,.45)}70%{box-shadow:0 0 0 9px rgba(229,138,78,0)}100%{box-shadow:0 0 0 0 rgba(229,138,78,0)}}
+.hero h1{font-size:clamp(52px,7.6vw,96px);margin-top:0;font-weight:400}
+.hero h1 .hi{display:block;font-size:.42em;font-style:italic;color:var(--muted);font-weight:400;margin-bottom:.15em;letter-spacing:0}
+.hero h1 .name{font-weight:500}
+.hero h1 .name em{font-style:italic;color:var(--apricot)}
+.lead{font-size:clamp(18px,1.6vw,20.5px);color:#4A463F;max-width:34ch;margin-top:26px;line-height:1.55}
+.lead b{font-weight:600;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:14px;font-weight:500;line-height:1.3}
+.chip.peach{background:var(--peach);color:var(--peach-ink)} .chip.butter{background:var(--butter);color:var(--butter-ink)}
+.chip.sage{background:var(--sage);color:var(--sage-ink)} .chip.sky{background:var(--sky);color:var(--sky-ink)}
+.chip.plain{background:var(--white);border:1px solid var(--line);color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font:600 15.5px/1 var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .35s var(--ease),background .3s,box-shadow .35s var(--ease),border-color .3s}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn.dark{background:var(--ink);color:var(--white)}
+.btn.dark:hover{background:var(--apricot-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(178,89,31,.25)}
+.btn.light{background:var(--white);color:var(--ink);border-color:var(--line)}
+.btn.light:hover{border-color:var(--apricot);transform:translateY(-2px);box-shadow:var(--shadow)}
+
+.hero-art{position:relative;align-self:end;height:min(640px,72vw);min-height:480px}
+.arch{position:absolute;left:8%;right:2%;bottom:0;top:6%;border-radius:999px 999px 0 0;background:var(--cream);overflow:hidden}
+.arch::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 30%,rgba(255,255,255,.65),transparent 70%)}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.75;animation:float 14s ease-in-out infinite}
+.orb.o1{width:260px;height:260px;background:#F6B98C;top:4%;right:-6%}
+.orb.o2{width:200px;height:200px;background:#F7E3A6;bottom:16%;left:-4%;animation-delay:-5s;animation-duration:17s}
+.orb.o3{width:160px;height:160px;background:#F9CFB2;top:38%;left:30%;animation-delay:-9s;opacity:.45}
+@keyframes float{0%,100%{transform:translate(0,0)}33%{transform:translate(18px,-22px)}66%{transform:translate(-14px,12px)}}
+.portrait{position:absolute;left:50%;bottom:0;width:min(80%,430px);transform:translateX(-50%);z-index:2;will-change:transform}
+.portrait img{display:block;width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(60,40,10,.12))}
+.float-card{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:18px;background:rgba(255,255,255,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow-lg);font-size:14px;line-height:1.35}
+.float-card b{display:block;font-weight:600;color:var(--ink)}
+.float-card span{color:var(--muted)}
+.float-card .ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:var(--apricot-soft);color:var(--apricot-deep)}
+.fc1{left:-2%;top:40%;animation:bob 7s ease-in-out infinite}
+.fc2{right:-1%;bottom:16%;animation:bob 8s ease-in-out infinite;animation-delay:-3s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* load sequence */
+.ld{animation:rise .9s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.ld.d1{animation-delay:.05s}.ld.d2{animation-delay:.13s}.ld.d3{animation-delay:.21s}.ld.d4{animation-delay:.29s}.ld.d5{animation-delay:.37s}
+.ld-photo{animation:photoIn 1.3s var(--ease) .35s both}
+@keyframes photoIn{from{opacity:0;filter:blur(14px);translate:0 28px}to{opacity:1;filter:blur(0);translate:0 0}}
+
+/* scroll reveal: visible at rest, plays when it enters */
+.rv.in{animation:rise .85s var(--ease) both}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0 56px;align-items:start}
+.about-grid > *{min-width:0}
+.about h2{font-size:clamp(32px,3.8vw,46px);margin:12px 0 26px}
+.about h2 em{color:var(--apricot);font-style:italic}
+.about .prose{display:grid;gap:18px;color:#3E3A34;max-width:62ch}
+.path{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;margin-top:30px;font-size:14px}
+.path .step{display:inline-flex;flex-direction:column;gap:1px;padding:9px 16px;border-radius:16px;background:var(--white);border:1px solid var(--line);line-height:1.3}
+.path .step b{font-weight:600}
+.path .step small{font-size:13px;color:var(--muted)}
+.path .to{color:var(--apricot)}
+.facts{margin:28px 0 0;display:grid;gap:10px;max-width:62ch}
+.facts div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding-top:10px;border-top:1px solid var(--line)}
+.facts dt{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--apricot-deep);padding-top:2px}
+.facts dd{margin:0;font-size:15.5px}
+.mini{display:inline-flex;align-items:center;gap:5px;margin-left:6px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--white);font:600 12.5px/1.4 var(--body);color:var(--apricot-deep);cursor:pointer;vertical-align:1px;transition:background .3s,border-color .3s}
+.mini:hover{background:var(--apricot-soft);border-color:var(--apricot)}
+.mini .chev{display:inline-block;transition:transform .4s var(--ease)}
+.mini[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.cw{grid-column:1/-1;display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s var(--ease),opacity .45s var(--ease),margin .55s var(--ease);margin-top:0}
+.cw.open{grid-template-rows:1fr;opacity:1;margin-top:28px}
+.cw-in{overflow:hidden;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cw-grp{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:16px 16px 10px;min-width:0}
+.cw-grp h4{margin:0 0 8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--apricot-deep)}
+.cw-grp ul{list-style:none;margin:0;padding:0}
+.cw-grp li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.35}
+.cw-grp li:first-child{border-top:0}
+.cw-grp li b{flex:none;font-size:12.5px;font-weight:700;color:var(--apricot-deep);font-variant-numeric:tabular-nums}
+.cw-grp li b.p{color:var(--muted);font-weight:600}
+.cw-note{grid-column:1/-1;font-size:13px;color:var(--muted);margin:2px 0 4px}
+.news{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow)}
+.news h3{font-size:24px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
+.news h3 small{font-family:var(--body);font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}
+.news ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.news li{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:12px 10px;border-radius:14px;opacity:.72;transition:opacity .3s,background .3s}
+.news li:hover{opacity:1;background:var(--ivory)}
+.news time{font-size:13px;font-weight:600;color:var(--apricot-deep);font-variant-numeric:tabular-nums;padding-top:2px}
+.news li p{font-size:15px;line-height:1.5}
+
+/* ---------- research ---------- */
+.tabs{position:relative;display:inline-flex;flex-wrap:wrap;gap:4px;padding:5px;border-radius:999px;background:var(--ivory);border:1px solid var(--line);margin-bottom:28px;max-width:100%}
+.tabs button{position:relative;z-index:1;border:0;background:none;font:500 14.5px/1 var(--body);color:var(--muted);padding:11px 16px;border-radius:999px;cursor:pointer;transition:color .3s}
+.tabs button[aria-pressed="true"]{color:var(--ink)}
+.tabs .tab-pill{position:absolute;z-index:0;border-radius:999px;background:var(--white);box-shadow:0 2px 10px rgba(60,40,10,.08);transition:all .45s var(--ease)}
+.rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.rcard{display:flex;flex-direction:column;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;cursor:pointer;padding:0;font:inherit;color:inherit;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),opacity .45s var(--ease),filter .45s var(--ease)}
+.rcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.rcard.hide{display:none}
+.rgrid.all .rcard:first-child{grid-column:1/-1}
+.rgrid.all .rcard:first-child .fig{aspect-ratio:16/5.4}
+.rcard.swap{animation:swapIn .55s var(--ease) both}
+@keyframes swapIn{from{opacity:0;filter:blur(8px);transform:scale(.98)}to{opacity:1;filter:blur(0);transform:none}}
+.rcard .fig{position:relative;aspect-ratio:16/8;max-width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:22px}
+.rcard .fig svg{width:100%;height:100%;transition:transform .6s var(--ease)}
+.rcard:hover .fig svg{transform:scale(1.03)}
+.fig img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;padding:10px;box-shadow:0 6px 20px rgba(60,40,10,.08);transition:transform .6s var(--ease)}
+.rcard:hover .fig img{transform:scale(1.03)}
+.rcard .fig{min-height:0}
+.fig.peach{background:var(--peach)} .fig.butter{background:var(--butter)} .fig.sage{background:var(--sage)} .fig.sky{background:var(--sky)} .fig.cream{background:var(--cream)}
+.rcard .body{padding:22px 24px 24px;display:grid;gap:10px;flex:1}
+.rcard .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:600}
+.badge.live{background:var(--apricot-soft);color:var(--apricot-deep)}
+.badge.live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--apricot)}
+.badge.done{background:var(--ivory);color:var(--muted);border:1px solid var(--line)}
+.rcard h3{font-size:25px;line-height:1.15}
+.rcard .sum{color:#4A463F;font-size:15.5px}
+.rcard .more{margin-top:auto;padding-top:6px;font-size:14.5px;font-weight:600;color:var(--apricot-deep);display:inline-flex;align-items:center;gap:8px}
+.rcard .more .arr{transition:transform .35s var(--ease)}
+.rcard:hover .more .arr{transform:translateX(4px)}
+.svg-ink{fill:var(--ink)} .svg-muted{fill:var(--muted)}
+
+/* ---------- publications ---------- */
+.pubs{display:grid;gap:14px}
+.pub{display:grid;grid-template-columns:90px 1fr;gap:24px;padding:26px 28px;border-radius:var(--r-md);background:var(--white);border:1px solid var(--line);transition:box-shadow .4s var(--ease),transform .4s var(--ease)}
+.pub:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.pub .yr{font-family:var(--display);font-variation-settings:"SOFT" 100;font-size:30px;color:var(--apricot);line-height:1}
+.pub .yr small{display:block;font-family:var(--body);font-size:13px;color:var(--muted);margin-top:6px}
+.pub h3{font-size:21px;line-height:1.3;font-weight:500}
+.pub .auth{font-size:15px;color:var(--muted);margin-top:8px}
+.pub .auth b{color:var(--ink);font-weight:600}
+.pub .venue{font-size:15px;margin-top:4px;font-style:italic;color:#4A463F}
+.pub .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.pill-link{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:13.5px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--white);opacity:.75;transition:opacity .3s,border-color .3s,background .3s}
+.pill-link:hover{opacity:1;border-color:var(--apricot);background:var(--apricot-soft)}
+.pill-note{font-size:13.5px;color:var(--muted)}
+.badge.oral{background:var(--ink);color:var(--white)}
+.badge.poster{background:var(--butter);color:var(--butter-ink)}
+
+/* ---------- projects bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px}
+.pcard{position:relative;border-radius:var(--r-md);background:var(--white);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.pcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.pcard .pfig{position:relative;padding:20px 22px 0;flex:1;display:grid;place-items:end center;min-height:150px}
+.pcard .pfig svg{width:100%;height:auto;transition:transform .6s var(--ease)}
+.pcard:hover .pfig svg{transform:scale(1.03)}
+.pcard .pbody{padding:20px 24px 24px;display:grid;gap:8px}
+.pcard .course{font-size:13px;color:var(--muted)}
+.pcard h3{font-size:22px;line-height:1.2}
+.pcard p{font-size:15px;color:#4A463F}
+.p-big{grid-column:span 4;grid-row:span 2}
+.p-big h3{font-size:28px}
+.p-mid{grid-column:span 2}
+.p-third{grid-column:span 2}
+.img-fig{place-items:center!important;padding:18px!important;min-height:0!important}
+.img-fig img{width:100%;height:auto;border-radius:12px;background:#fff;padding:8px;box-shadow:0 6px 20px rgba(60,40,10,.08);transition:transform .6s var(--ease)}
+.pcard:hover .img-fig img{transform:scale(1.03)}
+.poster-fig{position:relative;display:block!important;min-height:320px;overflow:hidden;padding:0!important}
+.poster-fig img{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:min(86%,520px);border-radius:12px 12px 0 0;box-shadow:0 10px 30px rgba(60,40,10,.12);transition:translate .6s var(--ease)}
+.pcard:hover .poster-fig img{translate:0 -6px}
+.pcard .team{font-size:14px;color:var(--muted)}
+.plinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.award{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--apricot-deep);background:var(--apricot-soft);padding:5px 11px;border-radius:999px;justify-self:start}
+details.others{margin-top:22px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--ivory);padding:4px 24px}
+details.others summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:600}
+details.others summary::-webkit-details-marker{display:none}
+details.others summary .plus{transition:transform .35s var(--ease);color:var(--apricot-deep);font-size:22px;line-height:1}
+details.others[open] summary .plus{transform:rotate(45deg)}
+details.others ul{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 24px}
+details.others li{padding:10px 0;border-top:1px solid var(--line);font-size:15px;opacity:.75;transition:opacity .3s}
+details.others li:hover{opacity:1}
+details.others li span{color:var(--muted);font-size:13.5px;display:block}
+
+/* ---------- moments ---------- */
+.marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.track{display:flex;gap:18px;width:max-content;animation:slide 48s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(calc(-50% - 9px))}}
+.shot{flex:none;width:300px;aspect-ratio:4/3;border-radius:var(--r-md);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:16px;transition:transform .45s var(--ease)}
+.shot:hover{transform:scale(1.03)}
+.shot .tag{position:relative;z-index:1;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.shot .ph{position:absolute;top:14px;right:14px;z-index:1;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,28,25,.45);font-weight:600}
+.shot.s1{background:linear-gradient(140deg,#F8D9C2,#F3ECDF)} .shot.s2{background:linear-gradient(140deg,#E4EFE2,#FAF7F0)}
+.shot.s3{background:linear-gradient(140deg,#FBF2D0,#F8D9C2)} .shot.s4{background:linear-gradient(140deg,#E3EDF8,#FAF7F0)}
+.shot.s5{background:linear-gradient(140deg,#F3ECDF,#FCE9DA)} .shot.s6{background:linear-gradient(140deg,#FBE3D2,#FBF2D0)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.photo{margin:0;border-radius:var(--r-md);overflow:hidden;background:var(--white);border:1px solid var(--line);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.photo:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.photo img{display:block;width:100%;aspect-ratio:4/5;max-width:100%;object-fit:cover;transition:transform .7s var(--ease),filter .5s}
+.photo:hover img{transform:scale(1.04)}
+.photo figcaption{padding:16px 18px 18px;display:grid;gap:2px}
+.photo figcaption b{font-family:var(--display);font-variation-settings:"SOFT" 100;font-weight:500;font-size:18px}
+.photo figcaption span{font-size:14px;color:var(--muted)}
+.moments-note{margin-top:22px;text-align:center;color:var(--muted);font-size:15px}
+
+/* ---------- beyond ---------- */
+.beyond{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.bitem{padding:22px 24px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--white);opacity:.82;transition:opacity .3s,transform .4s var(--ease),box-shadow .4s var(--ease)}
+.bitem:hover{opacity:1;transform:translateY(-3px);box-shadow:var(--shadow)}
+.bitem b{display:block;font-family:var(--display);font-variation-settings:"SOFT" 100;font-weight:500;font-size:19px;margin-bottom:6px}
+.bitem span{font-size:14.5px;color:var(--muted)}
+.bitem.key{opacity:1;padding:26px 26px 28px;display:flex;flex-direction:column;gap:2px}
+.bitem.key .when{font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--apricot-deep);margin-bottom:10px}
+.bitem.key b{font-size:22px;line-height:1.2;margin-bottom:8px}
+.slist{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--line)}
+.slist li{display:flex;justify-content:space-between;gap:18px;padding:14px 4px;border-bottom:1px solid var(--line);font-size:15.5px;opacity:.72;transition:opacity .3s,padding .35s var(--ease)}
+.slist li:hover{opacity:1;padding-left:10px}
+.slist time{flex:none;color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ivory);overflow:hidden;position:relative}
+.foot .wrap{padding-block:120px 48px;text-align:center}
+.foot h2{font-size:clamp(46px,8vw,104px);font-weight:400}
+.foot h2 em{color:var(--apricot);font-style:italic}
+.foot p.sub{color:var(--muted);margin:22px auto 0;max-width:46ch}
+.mailbox{display:inline-flex;align-items:center;gap:6px;margin-top:34px;padding:6px 6px 6px 22px;border-radius:999px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);max-width:100%}
+.mailbox code{font-family:var(--body);font-size:16px;font-weight:500;user-select:all;overflow-wrap:anywhere}
+.foot .links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.foot .fine{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13.5px;color:var(--muted)}
+.foot .orb.o1{top:-80px;left:-60px;right:auto} .foot .orb.o2{bottom:-60px;right:-40px;left:auto;top:auto}
+
+/* ---------- modal ---------- */
+dialog{border:0;padding:0;background:transparent;max-width:min(860px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 48px);overflow:visible}
+dialog::backdrop{background:rgba(30,28,25,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+dialog[open] .sheet{animation:sheetUp .6s var(--ease) both}
+@keyframes sheetUp{from{opacity:0;transform:translateY(40px) scale(.98);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.sheet{background:var(--white);border-radius:var(--r-lg);overflow:auto;max-height:calc(100dvh - 48px);box-shadow:0 30px 80px rgba(30,28,25,.25)}
+.sheet .sfig{aspect-ratio:16/7;max-width:100%;display:flex;align-items:center;justify-content:center;padding:28px}
+.sheet .sfig svg{width:100%;height:100%}
+.sheet .sfig{aspect-ratio:auto;min-height:260px;max-height:62vh}
+.sheet .sfig img{max-height:56vh}
+.sheet .sbody{padding:30px 36px 36px;display:grid;gap:22px}
+.sheet h3{font-size:clamp(28px,3.4vw,38px)}
+.sheet .who{color:var(--muted);font-size:15px;margin-top:8px}
+.sheet .blocks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sheet .blk{background:var(--ivory);border-radius:18px;padding:18px}
+.sheet .blk h4{margin:0 0 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--apricot-deep)}
+.sheet .blk p,.sheet .blk li{font-size:15px;line-height:1.55;color:#3E3A34}
+.sheet .blk ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.sheet .close{position:sticky;top:14px;float:right;margin:14px 14px -58px 0;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.85);backdrop-filter:blur(8px);cursor:pointer;font-size:20px;line-height:1;color:var(--ink);transition:transform .35s var(--ease),background .3s}
+.sheet .close:hover{transform:rotate(90deg);background:var(--apricot-soft)}
+
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:80;background:var(--ink);color:var(--white);padding:12px 20px;border-radius:999px;font-size:14.5px;font-weight:500;transition:all .45s var(--ease)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:120px}
+  .hero-copy{padding-bottom:0}
+  .hero-art{height:auto;min-height:0;aspect-ratio:4/4.9;max-width:480px;width:100%;margin-inline:auto;margin-top:12px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .cw-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cw:not(.open){margin-top:-36px}
+  .rgrid{grid-template-columns:1fr}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .p-big{grid-column:span 2;grid-row:auto} .p-mid,.p-third{grid-column:span 1}
+  .beyond{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .sheet .blocks{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding-block:80px}
+  .nav{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .nav .brand{display:none}
+  .nav-links a{padding:9px 11px;font-size:14px}
+  .nav .cv{padding:9px 13px}
+  .hero .wrap{padding-top:64px}
+  .fc1{left:0;top:auto;bottom:44%} .fc2{right:0;bottom:8%}
+  .float-card{font-size:12.5px;padding:9px 12px} .float-card .ic{width:30px;height:30px}
+  .bento{grid-template-columns:1fr} .p-big,.p-mid,.p-third{grid-column:auto}
+  .beyond{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .pub{grid-template-columns:1fr;gap:10px;padding:22px}
+  details.others ul{grid-template-columns:1fr}
+  .shot{width:240px}
+  .news li{grid-template-columns:64px 1fr}
+  .facts div{grid-template-columns:1fr;gap:2px}
+  .path{flex-wrap:wrap}
+  .cw-in{grid-template-columns:1fr}
+  .sheet .sbody{padding:24px 22px 28px}
+  .foot .fine{justify-content:center;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .portrait{transform:translateX(-50%)!important}
+}
+</style>
+
+<nav class="nav" id="nav" aria-label="Sections">
+  <a class="brand" href="#top">Yunui Kang</a>
+  <div class="nav-links" id="navLinks">
+    <span class="nav-pill" id="navPill"></span>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+  </div>
+  <a class="cv" href="files/yunui-kang-cv.pdf" target="_blank" rel="noopener">CV</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1 class="ld d2"><span class="hi">Hello, I'm</span><span class="name">Yunui <em>Kang</em></span></h1>
+      <p class="lead ld d3">I work on the security of <b>energy systems</b>: the communication protocols and edge devices that smart grids and EV charging infrastructure depend on.</p>
+      <div class="chips ld d4">
+        <span class="chip peach">Power Grid Security</span>
+        <span class="chip sky">EV Charging Protocols</span>
+        <span class="chip sage">Protocol Fuzzing</span>
+        <span class="chip butter">Lightweight Intrusion Detection</span>
+      </div>
+      <div class="ctas ld d5">
+        <a class="btn dark" href="files/yunui-kang-cv.pdf" target="_blank" rel="noopener">View CV <span class="arr">→</span></a>
+        <button class="btn light" type="button" data-copy>Copy email <span class="arr">→</span></button>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="false">
+      <div class="arch"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+      <div class="portrait ld-photo" id="portrait"><img src="images/portrait.webp" alt="Portrait of Yunui Kang" width="430" height="738"></div>
+      <div class="float-card fc1 ld d5"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b>Visiting Researcher</b><span>UT Dallas · Fall 2026</span></div></div>
+      <div class="float-card fc2 ld d5"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 15l-3.5 2 1-4-3-2.7 4-.3L12 6l1.5 4 4 .3-3 2.7 1 4z"/></svg></span><div><b>B.S. Energy Engineering</b><span>KENTECH · GPA 4.16/4.30</span></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="band ivory about" id="about">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <span class="eyebrow">About</span>
+      <h2>Security for the <em>energy systems</em> we rely on.</h2>
+      <div class="prose">
+        <p>I am a senior in Energy Engineering at KENTECH, concentrating in Electrical and Electronics Engineering. I study the security of power systems, from the communication protocols that coordinate grid equipment to the resource-constrained devices at the edge, where intrusion detection has to stay lightweight.</p>
+        <p>I am currently a visiting researcher at UT Dallas, working with Prof. Imtiaz Karim on EV charging protocol security.</p>
+      </div>
+      <div class="path" aria-label="Research path">
+        <span class="step"><b>Edge devices</b><small>lightweight IDS</small></span><span class="to">→</span>
+        <span class="step"><b>Networks</b><small>PQC overhead</small></span><span class="to">→</span>
+        <span class="step"><b>Energy infrastructure</b><small>EV charging</small></span>
+      </div>
+      <dl class="facts">
+        <div><dt>Education</dt><dd>B.S. Energy Engineering, KENTECH · Feb 2027 · GPA 4.16/4.30 <button class="mini" type="button" id="cwBtn" aria-expanded="false" aria-controls="coursework">Coursework <span class="chev">↓</span></button><br>Hankuk Academy of Foreign Studies, Yongin, Korea · Feb 2022</dd></div>
+        <div><dt>Languages</dt><dd>Korean (native) · English: TOEFL iBT 110, TOEIC 980</dd></div>
+      </dl>
+
+    </div>
+    <aside class="news rv">
+      <h3>News <small>2025 – 2026</small></h3>
+      <ol>
+        <li><time>Sep 2026</time><p>Started visiting research at the <b>UT Dallas</b> System and Network Security Lab with Prof. Imtiaz Karim.</p></li>
+        <li><time>Jul 2026</time><p>Joined the <b>KAIST</b> INA Lab (Prof. Dongsu Han) as a summer research intern.</p></li>
+        <li><time>Jun 2026</time><p>Trust Gateway won the <b>Outstanding Poster Award</b> at the KENTECH IR/CAPS Research Showcase.</p></li>
+        <li><time>Jan 2026</time><p>Research intern at <b>ETRI</b>, AI Convergence Security Research Section.</p></li>
+        <li><time>Nov 2025</time><p>Gave an <b>oral presentation</b> of HD-NIDSBench at CISC-W 2025.</p></li>
+      </ol>
+    </aside>
+      <div class="cw" id="coursework" aria-hidden="true"><div class="cw-in">
+        <div class="cw-grp"><h4>Power &amp; electrical</h4><ul><li><span>Control Theory and Applications</span><b class="g">A+</b></li><li><span>Electric Circuits I</span><b class="g">A+</b></li><li><span>Electronic Circuit</span><b class="g">A+</b></li><li><span>Semiconductor Device</span><b class="g">A0</b></li><li><span>Visionary Course: Grid Modernization</span><b class="g p">Pass</b></li></ul></div>
+        <div class="cw-grp"><h4>Systems, networks &amp; security</h4><ul><li><span>Computer Organization and Systems</span><b class="g">A+</b></li><li><span>Data Structure</span><b class="g">A+</b></li><li><span>Network Science</span><b class="g">A+</b></li><li><span>HarvardX CS50's Introduction to Cybersecurity</span><b class="g p">Transfer</b></li></ul></div>
+        <div class="cw-grp"><h4>AI, data &amp; optimization</h4><ul><li><span>Optimization Theory</span><b class="g">A+</b></li><li><span>Introduction to Deep Learning</span><b class="g">A+</b></li><li><span>Reinforcement Learning</span><b class="g">A+</b></li><li><span>Introduction to AI Programming</span><b class="g">A+</b></li><li><span>Data Science</span><b class="g">A+</b></li></ul></div>
+        <p class="cw-note">Selected courses related to my research. KENTECH grades on a 4.3 scale (A+ = 4.3, A0 = 4.0). Full transcript available on request.</p>
+      </div></div>
+  </div>
+</section>
+
+<section class="band" id="research">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="eyebrow">Research</div><h2>What I'm working on</h2></div>
+      <p class="note">Filter by theme, then open a card for the problem, approach, and results.</p>
+    </div>
+    <div class="tabs rv" id="tabs" role="group" aria-label="Filter research by theme">
+      <span class="tab-pill" id="tabPill"></span>
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="energy" aria-pressed="false">Energy &amp; CPS</button>
+      <button type="button" data-f="light" aria-pressed="false">Efficient &amp; Lightweight</button>
+      <button type="button" data-f="ai" aria-pressed="false">AI Systems &amp; Data</button>
+    </div>
+    <div class="rgrid all" id="rgrid"></div>
+  </div>
+</section>
+
+<section class="band ivory" id="publications">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="eyebrow">Publications</div><h2>Papers &amp; presentations</h2></div>
+    </div>
+    <div class="pubs">
+      <article class="pub rv">
+        <div class="yr">2025<small>Nov</small></div>
+        <div>
+          <h3>HD-NIDSBench: A Benchmarking Framework for Efficient Intrusion Detection Systems Using Hyperdimensional Computing</h3>
+          <p class="auth"><b>Yunui Kang</b>, Jiseung Kim, Yeseong Kim, Hyunju Kim, and Hyunwoo Lee</p>
+          <p class="venue">Conference on Information Security and Cryptography – Winter (CISC-W)</p>
+          <div class="row"><span class="badge oral">Oral</span><a class="pill-link" href="files/hd-nidsbench-paper.pdf" target="_blank" rel="noopener">Paper (Korean)</a><a class="pill-link" href="files/hd-nidsbench-slides.pdf" target="_blank" rel="noopener">Slides</a></div>
+        </div>
+      </article>
+      <article class="pub rv">
+        <div class="yr">2025<small>Jun</small></div>
+        <div>
+          <h3>PQNetSim: Simulator for Measuring PQC Networking Overhead</h3>
+          <p class="auth">Hakyeong Seong, <b>Yunui Kang</b>, Hyunju Kim, and Hyunwoo Lee</p>
+          <p class="venue">Conference on Information Security and Cryptography – Summer (CISC-S)</p>
+          <div class="row"><span class="badge poster">Poster</span><a class="pill-link" href="files/pqnetsim-paper.pdf" target="_blank" rel="noopener">Paper (Korean)</a></div>
+        </div>
+      </article>
+      <article class="pub rv">
+        <div class="yr">2024<small>Dec</small></div>
+        <div>
+          <h3>Comparative Study on the Static and Dynamic Performance of MOSFET and IGBT Devices</h3>
+          <p class="auth">Yeonwoo Seo, Seoeun Choi, <b>Yunui Kang</b>, and Hyemin Kang</p>
+          <p class="venue">1st KENTECH–GIST Academic Exchange Symposium</p>
+          <div class="row"><span class="badge poster">Poster</span><a class="pill-link" href="files/mosfet-igbt-poster.pdf" target="_blank" rel="noopener">Poster</a></div>
+        </div>
+      </article>
+      <article class="pub rv">
+        <div class="yr">2023</div>
+        <div>
+          <h3>Relationship Between Repeated Trials and Sensory Training: Focused on MBTI Distribution</h3>
+          <p class="auth"><b>Yunui Kang</b>, Jayun Jung, Seongmin Kim, and Jeongyun Min</p>
+          <p class="venue">Korean Society for Engineering Education Annual Conference</p>
+          <div class="row"><span class="badge poster">Poster</span><a class="pill-link" href="files/ksee-2023-poster.pdf" target="_blank" rel="noopener">Poster</a><span class="pill-note">Undergraduate course project · Statistical Data Analysis</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="eyebrow">Projects</div><h2>Course &amp; capstone work</h2></div>
+      <p class="note">Selected projects where I designed, built, and measured something end to end.</p>
+    </div>
+    <div class="bento">
+      <article class="pcard p-big rv">
+        <div class="pfig poster-fig" style="background:var(--peach)"><img src="images/tg_poster.webp" alt="Trust Gateway poster"></div>
+        <div class="pbody">
+          <span class="award">★ Outstanding Poster Award · 2026</span>
+          <span class="course">Capstone Design Project with ETRI · Mar – Jun 2026</span>
+          <h3>Trust Gateway: A Zero Trust Proxy for Dynamic Trust Evaluation and Re-authentication</h3>
+          <p>A proxy in front of OWASP Juice Shop that recomputes a per-request trust score (0–1) from 24 behavioral features grouped into 6 interpretable signals, then maps it to Allow, Monitor, Re-authenticate, or Block. Signal weights are tuned with SLSQP on 15,721 requests from 410 sessions.</p>
+          <p class="team">Team project with Huijeong Choi, Jia Hong, and Dongseok Kim</p>
+          <div class="plinks"><a class="pill-link" href="files/trust-gateway-poster.pdf" target="_blank" rel="noopener">Poster</a></div>
+        </div>
+      </article>
+      <article class="pcard p-mid rv">
+        <div class="pfig img-fig" style="background:var(--sky)"><img src="images/fig_turbine.webp" alt="Simulink model of the combined compensator for the coupled steam and gas turbine system"></div>
+        <div class="pbody">
+          <span class="course">Control Theory and Applications · Spring 2025</span>
+          <h3>Frequency Stabilization for Turbine Systems</h3>
+          <p>Coupled steam–gas turbines with 5% droop had a 1.26° phase margin. Compensators (PM 40–60°, GM ≥ 6 dB) plus AGC restored stable frequency.</p>
+          <div class="plinks"><a class="pill-link" href="files/turbine-frequency-control-slides.pdf" target="_blank" rel="noopener">Slides</a></div>
+        </div>
+      </article>
+      <article class="pcard p-mid rv">
+        <div class="pfig img-fig" style="background:var(--butter)"><img src="images/fig_ipm.webp" alt="Interior-point solver flow: outer loop, Newton inner solver, convergence check, and barrier weakening"></div>
+        <div class="pbody">
+          <span class="course">Optimization Theory · Fall 2025</span>
+          <h3>Constrained Logistic Regression via Interior-Point Method</h3>
+          <p>A log-barrier Newton solver encoding medical domain knowledge as sign constraints on 30 weights. KKT conditions verified at the solution.</p>
+          <div class="plinks"><a class="pill-link" href="files/constrained-logreg-ipm-report.pdf" target="_blank" rel="noopener">Report</a><a class="pill-link" href="files/constrained-logreg-ipm-slides.pdf" target="_blank" rel="noopener">Slides</a></div>
+        </div>
+      </article>
+      <article class="pcard p-third rv">
+        <div class="pbody">
+          <span class="course">Introduction to Deep Learning · Spring 2025</span>
+          <h3>K-means SMOTE + GAN Oversampling</h3>
+          <p>A GAN adds non-linear diversity beyond SMOTE's interpolation. Test accuracy rose from 95.92% to 97.86%.</p>
+        </div>
+      </article>
+      <article class="pcard p-third rv">
+        <div class="pbody">
+          <span class="course">Introduction to AI Programming · Fall 2024</span>
+          <h3>Legal Provision Identification with a Fine-tuned LLM</h3>
+          <p>Crawled 2,881 court rulings and fine-tuned GPT-3.5 on 3.7M tokens to map described situations to statutes.</p>
+        </div>
+      </article>
+      <article class="pcard p-third rv">
+        <div class="pbody">
+          <span class="course">Data Science · Spring 2024</span>
+          <h3>Deep Q-Learning for Tetris</h3>
+          <p>DQN and Double DQN agents, benchmarked across reward designs to reduce Q-value overestimation.</p>
+        </div>
+      </article>
+    </div>
+    <details class="others rv">
+      <summary>Other projects <span class="plus">+</span></summary>
+      <ul>
+        <li>Eatalyze <span>LLM summaries of restaurant reviews across Google, Naver, and Kakao · 2024</span></li>
+        <li>Air Network Efficiency under Attack <span>US airline network vs. BA, WS, and ER models · Network Science · 2024</span></li>
+        <li>Music Recommendation with Spotify Analytics <span>Feature-weighted similarity search · Data Literacy Foundations · 2023</span></li>
+        <li>Battery Stabilization in EV Fires <span>Patent analysis · Intellectual Property and Value Creation · 2025</span></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section class="band ivory" id="moments">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="eyebrow">Moments</div><h2>Behind the research</h2></div>
+    </div>
+    <div class="gallery">
+      <figure class="photo rv"><img src="images/talk.webp" alt="Yunui Kang giving an oral talk on HD-NIDSBench at CISC-W 2025"><figcaption><b>Oral talk on HD-NIDSBench</b><span>CISC-W 2025 · Nov 2025</span></figcaption></figure>
+      <figure class="photo rv"><img src="images/poster.webp" alt="Yunui Kang presenting the Trust Gateway poster"><figcaption><b>Presenting Trust Gateway</b><span>IR/CAPS Research Showcase, KENTECH · Jun 2026</span></figcaption></figure>
+      <figure class="photo rv"><img src="images/ces.webp" alt="Yunui Kang with classmates at CES 2025" style="object-position:72% 60%"><figcaption><b>CES 2025</b><span>Las Vegas · Jan 2025</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="beyond">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="eyebrow">Beyond research</div><h2>Teaching &amp; service</h2></div></div>
+    <div class="beyond">
+      <div class="bitem key rv"><span class="when">2024 – 2026</span><b>Undergraduate Teaching Assistant</b><span>English for Specific Purposes (ESP) courses, KENTECH</span></div>
+      <div class="bitem key rv"><span class="when">2025</span><b>Class Representative</b><span>Represented third-year students in the Dept. of Energy Engineering. Leadership Scholarship, two semesters.</span></div>
+      <div class="bitem key rv"><span class="when">Mar – Dec 2025</span><b>General Secretary, Power Systems Academic Club</b><span>Ran the club's regular study sessions and seminars on power grid control and operation.</span></div>
+    </div>
+    <ul class="slist rv">
+      <li><span>Jeonnam Student Venture Startup Expedition · selected team</span><time>2026</time></li>
+      <li><span>Graduation Preparation Committee, KENTECH Student Council</span><time>2026</time></li>
+      <li><span>Festival Planning Committee, KENTECH Student Council</span><time>2025</time></li>
+      <li><span>Student Council &amp; Student Board of Audit and Inspection, KENTECH</span><time>2024</time></li>
+      <li><span>Working Scholar · Technology Commercialization, Research Support, IT Operations</span><time>2024 – 2026</time></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot" id="contact">
+  <span class="orb o1"></span><span class="orb o2"></span>
+  <div class="wrap">
+    <h2 class="rv">Let's talk <em>research.</em></h2>
+    <p class="sub rv">I would be glad to hear from researchers working on power grid and energy infrastructure security.</p>
+    <div class="mailbox rv"><code id="email">yunuikang@kentech.ac.kr</code><button class="btn dark" type="button" data-copy style="padding:12px 18px">Copy</button></div>
+    <div class="links rv">
+      <a class="pill-link" href="files/yunui-kang-cv.pdf" target="_blank" rel="noopener">CV</a>
+      <a class="pill-link" href="#publications">Publications</a>
+      <a class="pill-link" href="#research">Research</a>
+    </div>
+    <div class="fine"><span>© 2026 Yunui Kang</span><span>Naju, Korea · Richardson, TX</span></div>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="sheet">
+    <button class="close" type="button" id="dlgClose" aria-label="Close">×</button>
+    <div class="sfig" id="dlgFig"></div>
+    <div class="sbody">
+      <div><div class="eyebrow" id="dlgEye"></div><h3 id="dlgTitle"></h3><p class="who" id="dlgWho"></p></div>
+      <div class="blocks" id="dlgBlocks"></div>
+      <div class="chips" id="dlgTags"></div>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const F = 'font-family="Instrument Sans, sans-serif"';
+const figs = {
+  ocpp:'<img src="images/fig_ocpp.webp" alt="LLM multi-agent framework for spec-based fuzzing of EV charging protocols: spec and implementation inputs, four agents in a loop, vulnerability report output">',
+  hdc:'<img src="images/fig_hdc.webp" alt="HD-NIDSBench workflow: HD encoder, single-pass training with momentum retraining and dimension regeneration, and similarity-based inference">',
+  pqc:'<img src="images/fig_pqc.webp" alt="PQNetSim testbed: configuration and controller driving a server and a Raspberry Pi client, with results collected as graphs and tables">',
+  gpu:'<img src="images/fig_gpu.webp" alt="GPU busy time for synthetic data versus a real agent trace: 100 percent versus 38 percent GPU utilization">',
+  reid:'<img src="images/fig_reid.webp" alt="Review step of the pseudo-labeling tool for person re-identification, showing images grouped under one ID">'
+
+};
+
+const research = [
+  {id:'ocpp', f:'energy', tint:'peach', status:'live', when:'Sep 2026 – present', where:'UT Dallas · Prof. Imtiaz Karim',
+   title:'LLM agents that fuzz EV chargers over OCPP',
+   sum:'Charging stations talk to the grid through OCPP. I lead a pipeline of LLM agents that reads the spec, writes tests, and fuzzes two commercial chargers to find where they deviate from it.',
+   problem:'Smart-grid and EV-charging protocols are specified in hundreds to thousands of pages. When an implementation departs from the spec, that gap can become a vulnerability, and checking it by hand does not scale.',
+   approach:['Agent 1 parses the OCPP 1.6 spec and extracts security requirements','Agent 2 generates test cases from those requirements','Agent 3 builds and sends fuzzing messages to real chargers','Agent 4 judges responses against the spec'],
+   result:'Ongoing. The goal is to carry spec-based analysis methods proven in cellular security into the energy domain. Findings will be shared after responsible disclosure.',
+   tags:['OCPP 1.6','Protocol fuzzing','LLM agents','EV charging']},
+  {id:'hdc', f:'light', tint:'sage', status:'live', when:'Aug 2025 – present', where:'KENTECH · Prof. Hyunwoo Lee · First author',
+   title:'HD-NIDSBench: intrusion detection small enough for the edge',
+   sum:'A benchmark for hyperdimensional-computing intrusion detection. HDC trains in a single pass with no backpropagation and used about 80× less memory than a comparable neural network.',
+   problem:'Deep-learning intrusion detectors are too expensive to train and run on resource-constrained IoT edge devices.',
+   approach:['Compared 3 encoders, 2 training methods, and 5 similarity metrics','Evaluated on NSL-KDD, UNSW-NB15, and Mirai','Also compared against LightGBM, Random Forest, and Naive Bayes'],
+   result:'Retraining improved F1 by 17% on average over single-pass training; the similarity metric mattered little. HDC needed 2.44 KB versus 193 KB. The extension now covers 11 datasets and detects over 90% of attacks unseen in training.',
+   tags:['Hyperdimensional computing','NIDS','IoT edge','Oral · CISC-W 2025']},
+  {id:'pqc', f:'light', tint:'butter', status:'done', when:'Mar – Jun 2025', where:'KENTECH · Second author',
+   title:'PQNetSim: what post-quantum crypto costs on lossy IoT links',
+   sum:'A testbed that measures how ML-KEM changes DTLS 1.3 handshakes on constrained devices and unreliable networks.',
+   problem:'Post-quantum keys and signatures are much larger, which hurts most on IoT networks that are slow and lossy.',
+   approach:['Varied device (Raspberry Pi, i5), delay, loss, and bandwidth with Linux tc','Compared TLS 1.3 and DTLS 1.3 with and without ML-KEM'],
+   result:'ML-KEM added 59.9–373.7 ms to DTLS 1.3 handshakes, so PQC needs to be judged on network behavior as well as compute cost.',
+   tags:['PQC','ML-KEM','DTLS 1.3','Poster · CISC-S 2025']},
+  {id:'gpu', f:'ai', tint:'sky', status:'done', when:'Jul – Aug 2026', where:'KAIST INA Lab · Prof. Dongsu Han',
+   title:'Keeping GPUs busy when LLM agents call tools',
+   sum:'Agentic workloads alternate between model calls and tool calls. During tool calls the GPU sits idle while its memory stays occupied.',
+   problem:'LLM serving was designed for one prompt and one answer. Coding agents go back and forth with tools dozens of times, and the KV cache holds GPU memory even when nothing runs.',
+   approach:['Studied GPU underutilization in agentic LLM serving','Implemented CPU-offloading schedulers aimed at raising GPU throughput under memory pressure'],
+   result:'Exploratory internship work. The figure shows the gap that motivated it: on a real agent trace the GPU was busy only 38% of the time.',
+   tags:['LLM serving','GPU memory','Scheduling']},
+  {id:'reid', f:'ai', tint:'cream', status:'done', when:'Jan – Feb 2026', where:'ETRI · AI Convergence Security Research Section',
+   title:'Pseudo-labeling for person re-identification',
+   sum:'Evaluated clustering-based labeling strategies for a re-identification benchmark where some attributes appear in under 1% of images.',
+   problem:'Building a labeled benchmark is slow, and severe attribute imbalance makes plain accuracy misleading.',
+   approach:['Compared K-means, DBSCAN, and HDBSCAN pseudo-labeling on pretrained embeddings','Used iterative re-clustering to break up oversized clusters'],
+   result:'Contributed to the dataset preparation for a national research project.',
+   tags:['Re-ID','Clustering','Class imbalance']}
+];
+
+const grid = document.getElementById('rgrid');
+grid.innerHTML = research.map(r=>`
+  <button class="rcard rv" type="button" data-id="${r.id}" data-f="${r.f}">
+    <div class="fig ${r.tint}">${figs[r.id]}</div>
+    <div class="body">
+      <div class="meta">${r.status==='live'?'<span class="badge live">Ongoing</span>':'<span class="badge done">Completed</span>'}<span>${r.when}</span></div>
+      <h3>${r.title}</h3>
+      <p class="sum">${r.sum}</p>
+      <span class="more">Read more <span class="arr">→</span></span>
+    </div>
+  </button>`).join('');
+
+/* modal */
+const dlg = document.getElementById('dlg');
+grid.addEventListener('click', e=>{
+  const card = e.target.closest('.rcard'); if(!card) return;
+  const r = research.find(x=>x.id===card.dataset.id);
+  const fig = document.getElementById('dlgFig');
+  fig.className = 'sfig fig '+r.tint; fig.innerHTML = figs[r.id];
+  document.getElementById('dlgEye').textContent = r.when;
+  document.getElementById('dlgTitle').textContent = r.title;
+  document.getElementById('dlgWho').textContent = r.where;
+  document.getElementById('dlgBlocks').innerHTML =
+    `<div class="blk"><h4>Problem</h4><p>${r.problem}</p></div>`+
+    `<div class="blk"><h4>Approach</h4><ul>${r.approach.map(a=>`<li>${a}</li>`).join('')}</ul></div>`+
+    `<div class="blk"><h4>Results</h4><p>${r.result}</p></div>`;
+  document.getElementById('dlgTags').innerHTML = r.tags.map(t=>`<span class="chip plain">${t}</span>`).join('');
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+});
+document.getElementById('dlgClose').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });
+
+/* filter tabs with sliding pill */
+const tabs = document.getElementById('tabs'), tabPill = document.getElementById('tabPill');
+function placeTabPill(btn){ tabPill.style.left=btn.offsetLeft+'px'; tabPill.style.top=btn.offsetTop+'px'; tabPill.style.width=btn.offsetWidth+'px'; tabPill.style.height=btn.offsetHeight+'px'; }
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  tabs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  placeTabPill(b);
+  const f=b.dataset.f; grid.classList.toggle('all', f==='all');
+  grid.querySelectorAll('.rcard').forEach(c=>{
+    const show = f==='all' || c.dataset.f===f;
+    c.classList.toggle('hide',!show); c.classList.remove('swap','in');
+    if(show){ void c.offsetWidth; c.classList.add('swap'); }
+  });
+});
+
+/* nav: brand reveal + sliding active pill */
+const nav=document.getElementById('nav'), links=[...document.querySelectorAll('#navLinks a')], navPill=document.getElementById('navPill');
+function placeNavPill(a){ if(!a){navPill.style.opacity=0;return;} navPill.style.opacity=1; navPill.style.left=a.offsetLeft+'px'; navPill.style.width=a.offsetWidth+'px'; }
+const secIds=['about','research','publications','projects'];
+function onScroll(){
+  const y=window.scrollY;
+  nav.classList.toggle('scrolled', y>120);
+  let cur=null;
+  for(const id of secIds){ const el=document.getElementById(id); if(el && el.getBoundingClientRect().top < window.innerHeight*0.4) cur=id; }
+  const end=document.getElementById('moments').getBoundingClientRect().top < window.innerHeight*0.4;
+  links.forEach(a=>a.classList.toggle('active', !end && a.getAttribute('href')==='#'+cur));
+  placeNavPill(end?null:links.find(a=>a.getAttribute('href')==='#'+cur));
+  if(!reduce){ const p=document.getElementById('portrait'); p.style.transform=`translateX(-50%) translateY(${Math.min(y,700)*0.08}px)`; }
+}
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* scroll reveal — elements are visible at rest; the animation plays as they enter */
+if('IntersectionObserver' in window && !reduce){
+  const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }),{threshold:0});
+  requestAnimationFrame(()=>document.querySelectorAll('.rv').forEach(el=>{ if(el.getBoundingClientRect().top>window.innerHeight) io.observe(el); }));
+}
+
+
+/* coursework toggle */
+const cwBtn=document.getElementById('cwBtn'), cw=document.getElementById('coursework');
+cwBtn.addEventListener('click',()=>{ const open=!cw.classList.contains('open'); cw.classList.toggle('open',open); cwBtn.setAttribute('aria-expanded',open); cw.setAttribute('aria-hidden',!open); });
+
+/* toast + copy */
+const toast=document.getElementById('toast'); let tt;
+function say(msg){ toast.textContent=msg; toast.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>toast.classList.remove('show'),2200); }
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+  const email='yunuikang@kentech.ac.kr';
+  const fallback=()=>{ const r=document.createRange(); r.selectNodeContents(document.getElementById('email')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); say('Email selected. Press Ctrl+C to copy.'); };
+  try{ navigator.clipboard.writeText(email).then(()=>say('Copied yunuikang@kentech.ac.kr'),fallback); }catch(e){ fallback(); }
+}));
+
+window.addEventListener('scroll',()=>requestAnimationFrame(onScroll),{passive:true});
+window.addEventListener('resize',()=>{ placeTabPill(tabs.querySelector('[aria-pressed="true"]')); onScroll(); });
+document.fonts && document.fonts.ready.then(()=>{ placeTabPill(tabs.querySelector('[aria-pressed="true"]')); onScroll(); });
+placeTabPill(tabs.querySelector('[aria-pressed="true"]')); onScroll();
+</script>
