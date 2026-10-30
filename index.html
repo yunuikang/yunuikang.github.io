@@ -109,9 +109,10 @@ a{color:inherit}
 .about h2{font-size:clamp(32px,3.8vw,46px);margin:12px 0 26px}
 .about h2 em{color:var(--apricot);font-style:italic}
 .about .prose{display:grid;gap:18px;color:#3E3A34;max-width:62ch}
-.path{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:30px;font-size:14px}
-.path .step{padding:8px 14px;border-radius:999px;background:var(--white);border:1px solid var(--line)}
+.path{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;margin-top:30px;font-size:14px}
+.path .step{display:inline-flex;flex-direction:column;gap:1px;padding:9px 16px;border-radius:16px;background:var(--white);border:1px solid var(--line);line-height:1.3}
 .path .step b{font-weight:600}
+.path .step small{font-size:13px;color:var(--muted)}
 .path .to{color:var(--apricot)}
 .facts{margin:28px 0 0;display:grid;gap:10px;max-width:62ch}
 .facts div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding-top:10px;border-top:1px solid var(--line)}
@@ -332,6 +333,7 @@ dialog[open] .sheet{animation:sheetUp .6s var(--ease) both}
   .shot{width:240px}
   .news li{grid-template-columns:64px 1fr}
   .facts div{grid-template-columns:1fr;gap:2px}
+  .path{flex-wrap:wrap}
   .cw-in{grid-template-columns:1fr}
   .sheet .sbody{padding:24px 22px 28px}
   .foot .fine{justify-content:center;text-align:center}
@@ -389,12 +391,12 @@ dialog[open] .sheet{animation:sheetUp .6s var(--ease) both}
         <p>I am currently a visiting researcher at UT Dallas, working with Prof. Imtiaz Karim on EV charging protocol security.</p>
       </div>
       <div class="path" aria-label="Research path">
-        <span class="step"><b>Edge devices</b> · lightweight IDS</span><span class="to">→</span>
-        <span class="step"><b>Networks</b> · PQC overhead</span><span class="to">→</span>
-        <span class="step"><b>Energy infrastructure</b> · EV charging</span>
+        <span class="step"><b>Edge devices</b><small>lightweight IDS</small></span><span class="to">→</span>
+        <span class="step"><b>Networks</b><small>PQC overhead</small></span><span class="to">→</span>
+        <span class="step"><b>Energy infrastructure</b><small>EV charging</small></span>
       </div>
       <dl class="facts">
-        <div><dt>Education</dt><dd>B.S. Energy Engineering, KENTECH · Feb 2027 (expected) · GPA 4.16/4.30 <button class="mini" type="button" id="cwBtn" aria-expanded="false" aria-controls="coursework">Coursework <span class="chev">↓</span></button><br>Hankuk Academy of Foreign Studies, Yongin, Korea · Feb 2022</dd></div>
+        <div><dt>Education</dt><dd>B.S. Energy Engineering, KENTECH · Feb 2027 · GPA 4.16/4.30 <button class="mini" type="button" id="cwBtn" aria-expanded="false" aria-controls="coursework">Coursework <span class="chev">↓</span></button><br>Hankuk Academy of Foreign Studies, Yongin, Korea · Feb 2022</dd></div>
         <div><dt>Languages</dt><dd>Korean (native) · English: TOEFL iBT 110, TOEIC 980</dd></div>
       </dl>
 
